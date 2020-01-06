@@ -14,17 +14,17 @@ const db = require("./config/keys").mongoURI;
 const users = require("./routes/api/users");
 
 //引入profile.js
-const profiles = require("./routes/api/profiles")
+const profiles = require("./routes/api/profiles");
 
 //passport init
-const passport=require("passport")
+const passport = require("passport");
 app.use(passport.initialize());
-require("./config/passport")(passport)
+require("./config/passport")(passport);
 
 mongoose.set("useFindAndModify", false);
 //connect to mongodb
 mongoose
-  .connect(db, { useNewUrlParser: true })
+	.connect(db, { useNewUrlParser: true })
 	.then(() => console.log("1.mLab connected!"))
 	.catch(err => console.log("2.mLab connect fail:" + err));
 
@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
 
 //使用users
 app.use("/api/users", users);
-app.use("/api/profiles",profiles)
+app.use("/api/profiles", profiles);
 
 const port = process.env.PORT || 5000;
 
